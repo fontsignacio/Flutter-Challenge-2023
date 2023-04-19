@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_challenge/view/details/mediaList.dart';
-import 'package:flutter_challenge/view/details/mediaListOverview.dart';
+import 'package:flutter_challenge/view/details/media_list.dart';
+import 'package:flutter_challenge/view/details/media_list_overview.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class Home extends StatefulWidget {
@@ -103,7 +103,7 @@ class _HomeState extends State<Home> {
             ),
           ),
           Container(
-            width: 200,
+            width: MediaQuery.of(context).size.width * 0.7,
             margin: const EdgeInsets.only(left: 10),
             child: TextField(
               controller: controller,

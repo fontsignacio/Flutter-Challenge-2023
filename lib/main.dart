@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_challenge/view/home/home_screen.dart';
+import 'package:flutter_challenge/view/login/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: Color.fromARGB(255, 158, 0, 126),
+          primary: const Color.fromARGB(255, 158, 0, 126),
         ),
         scaffoldBackgroundColor: const Color(0xff0f111d),
         tabBarTheme: const TabBarTheme(
