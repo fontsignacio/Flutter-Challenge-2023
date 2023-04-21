@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_challenge/view/details/media_list.dart';
-import 'package:flutter_challenge/view/details/media_list_overview.dart';
-import 'package:velocity_x/velocity_x.dart';
+import 'package:flutter_challenge/model/product.dart';
+import 'package:flutter_challenge/view/details/product_list.dart';
+import 'package:flutter_challenge/view/details/product_list_overview.dart';
+import '../../view_model/home/product_view_model.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -12,43 +13,36 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final TextEditingController controller = TextEditingController();
+    final List<Product> _product = [];
   bool _isLoading = true;
+
 
   @override
   void initState(){
     super.initState();
-    loadMovies();
+    loadProduct();
   }
-  void loadMovies()async {
+  void loadProduct()async {
+    var products = await HttpHandler.fetchProducts();
     setState(() {
+      _product.addAll(products);
       _isLoading = false;
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+      onWillPop: () async => false, // handle back button press by doing nothing
+      child:  Scaffold(
       appBar: AppBar(
-        title: "Flutter Challenge 2023".text.make(),
+        title: const Text("Flutter Challenge 2023"),
+        automaticallyImplyLeading: false,
       ),
       body: Column(
         children: [
-          Flexible(child: Padding(padding: const EdgeInsets.all(10), child: _searchBar(),)),
-          
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: GestureDetector(  
-                child: MediaList(),
-                onTap: () {
-                  var router = MaterialPageRoute(
-                  builder: (context) => MediaOverview());
-                  Navigator.of(context).push(router);
-                }
-              ),
-            ),
-          )
-          /*Expanded(
             child: ListView.builder(
               itemBuilder: (context, index) {
                 if (!_isLoading) {
@@ -56,38 +50,39 @@ class _HomeState extends State<Home> {
                   Padding(
                     padding: const EdgeInsets.all(10),
                     child: GestureDetector(  
-                      child: MediaList(media: mediaDisplay[index - 1]),
+                      child: ProductList(product: _product[index]),
                       onTap: () {
                         var router = MaterialPageRoute(
-                        builder: (context) => MediaOverview(media: mediaDisplay[index - 1]));
+                        builder: (context) => ProductOverview(product: _product[index]));
                         Navigator.of(context).push(router);
                       }
                     )
                   );              
-              } else {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height*0.2,
-                    ),
-                    const Text('Loading ...', style: TextStyle(fontSize: 16.0, color: Colors.white)),
-                  ],
-                );
-              }
-            },
-            itemCount: mediaDisplay.length + 1,
+                } else {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height*0.2,
+                      ),
+                      const Text('Loading ...', style: TextStyle(fontSize: 16.0, color: Colors.white)),
+                    ],
+                  );
+                }
+              },
+              itemCount: _product.length,
+              )
             )
-          )*/
-        ],
-      ) 
+          ],
+        )    
+      )
     );
   }
   _searchBar(){
     return Container(
       height: 60,
-      margin: const EdgeInsets.symmetric(horizontal: 2),
+      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       decoration: BoxDecoration(
         color:const Color.fromARGB(255, 217, 217, 217),
         borderRadius: BorderRadius.circular(10),
@@ -95,9 +90,9 @@ class _HomeState extends State<Home> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: const Icon(Icons.search,
+          const Padding(
+            padding: EdgeInsets.all(10),
+            child: Icon(Icons.search,
               color: Colors.black54,
               size: 30
             ),

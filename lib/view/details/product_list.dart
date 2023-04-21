@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import '../../model/product.dart';
 
-class MediaList extends StatelessWidget {
-  const MediaList({super.key});
+class ProductList extends StatelessWidget {
+  const ProductList({super.key, required this.product});
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class MediaList extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
                     child: Image.network (
-                      "https://i.dummyjson.com/data/products/1/3.jpg",
+                      product.thumbnail!,
                       fit: BoxFit.cover,
                       height: 160,
                       width: 160,
@@ -42,18 +44,16 @@ class MediaList extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      SizedBox(
-                        //width: 250,
-                          child: Text("iPhone 9", 
-                            style: const TextStyle(fontSize: 18,
-                            overflow: TextOverflow.ellipsis,
-                            color: Colors.black
-                          )
+                      Text(product.title!, 
+                          style: const TextStyle(fontSize: 18,          
+                          color: Colors.black
                         ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,   
                       ),
                       Container(
                         padding: const EdgeInsets.only(top: 5.0),
-                        child:  Text("12,96% OFF", 
+                        child:  Text("${product.discountPercentage}% OFF", 
                           style: const TextStyle(fontSize: 14,
                             color: Color.fromARGB(255, 32, 173, 93),
                             fontWeight: FontWeight.bold
@@ -62,7 +62,7 @@ class MediaList extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                         ),                  
                       ),
-                      Text("USD 590,00", 
+                      Text("${product.price?.toDouble().toStringAsFixed(2)}", 
                         style: const TextStyle(fontSize: 16,
                           color: Colors.black,
                           fontWeight: FontWeight.bold
@@ -75,7 +75,7 @@ class MediaList extends StatelessWidget {
                         child: Row(
                           children: [
                             Icon(Icons.star, color: Colors.yellow.shade600, size: 23),
-                            Text(" 4.69",  
+                            Text(" ${product.rating}",  
                               style: const TextStyle(
                                 fontSize: 15,
                                 color: Colors.black
@@ -86,7 +86,7 @@ class MediaList extends StatelessWidget {
                       ),
                       Container(
                         padding: const EdgeInsets.only(top: 40.0),
-                        child: Text("Stock: 94", 
+                        child: Text("Stock: ${product.stock}", 
                             style: const TextStyle(color: Colors.black54),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,

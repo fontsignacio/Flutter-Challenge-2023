@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
-class MediaOverview extends StatelessWidget {
-  const MediaOverview({super.key});
+import '../../model/product.dart';
+
+class ProductOverview extends StatelessWidget {
+  const ProductOverview({super.key, required this.product});
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,7 @@ class MediaOverview extends StatelessWidget {
                 Opacity(
                   opacity: 0.4,
                   child:Image.network(
-                    "https://i.dummyjson.com/data/products/1/1.jpg",
+                    product.thumbnail!,
                     fit: BoxFit.cover,
                     width: double.infinity,
                     height: 200,
@@ -43,7 +46,7 @@ class MediaOverview extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(20),
                           child: Image.network(
-                            "https://i.dummyjson.com/data/products/1/3.jpg",
+                            product.thumbnail!,
                             fit: BoxFit.cover,
                             height: 160,
                             width: 160,
@@ -86,7 +89,7 @@ class MediaOverview extends StatelessWidget {
                   children: <Widget>[
                     Container(
                       padding: const EdgeInsets.only(left: 25, top: 15),
-                      child: Text("iPhone 9", 
+                      child: Text(product.title!, 
                           style: const TextStyle(
                             overflow: TextOverflow.ellipsis,
                             fontWeight: FontWeight.
@@ -101,7 +104,7 @@ class MediaOverview extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 25, bottom: 15, top: 10),
                   child: Row(
                     children: [
-                      Text("USD 590,00", 
+                      Text("USD ${product.price?.toDouble().toStringAsFixed(2)}", 
                           style: const TextStyle(fontSize: 25,
                             color: Colors.white,
                             fontWeight: FontWeight.normal
@@ -111,7 +114,7 @@ class MediaOverview extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 5, top: 5),
-                        child: Text("12,96% OFF", 
+                        child: Text("${product.discountPercentage}% OFF", 
                             style: const TextStyle(fontSize: 15,
                               color: Color.fromARGB(255, 32, 173, 93),
                               fontWeight: FontWeight.bold
@@ -129,7 +132,7 @@ class MediaOverview extends StatelessWidget {
                     color: const Color.fromARGB(255, 52, 51, 51),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 15, right: 15),
-                      child: Text("\n An apple mobile which is nothing like apple \n", 
+                      child: Text("\n${product.description}\n", 
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 17,
@@ -143,7 +146,7 @@ class MediaOverview extends StatelessWidget {
                   child: Row(
                     children: [
                       const Text("   Category: ", style: TextStyle(color: Colors.white60)),
-                      Text("Smartphone", 
+                      Text(product.category!, 
                             style: const TextStyle(color: Colors.white),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
@@ -156,7 +159,7 @@ class MediaOverview extends StatelessWidget {
                   child: Row(
                     children: [
                       const Text("   Brand: ", style: TextStyle(color: Colors.white60)),
-                      Text("Apple", 
+                      Text(product.brand!, 
                         style: const TextStyle(color: Colors.white))
                     ],
                   ),
@@ -166,7 +169,7 @@ class MediaOverview extends StatelessWidget {
                   child: Row(
                     children: [
                       const Text("   Stock: ", style: TextStyle(color: Colors.white60)),
-                      Text("94", 
+                      Text("${product.stock}", 
                         style: const TextStyle(color: Colors.white))
                     ],
                   ),
@@ -176,7 +179,7 @@ class MediaOverview extends StatelessWidget {
                   child: Row(
                     children: [
                       const Icon(Icons.star, color: Colors.yellow, size: 20),
-                      Text(" 4.69",  
+                      Text(" ${product.rating}",  
                         style: const TextStyle(color: Colors.white))
                     ],
                   ),
