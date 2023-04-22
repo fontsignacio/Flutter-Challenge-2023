@@ -33,8 +33,8 @@ class ProductList extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(15),
                         child: Image.network (
-                          product.images![0],
-                          fit: BoxFit.fitHeight,
+                          product.thumbnail!,
+                          fit: BoxFit.cover,
                           height: 160,
                           width: 160,
                         ),
@@ -45,12 +45,17 @@ class ProductList extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text(
-                            product.title!,
-                            style: const TextStyle(
+                          SizedBox(
+                            height: 40,
+                            width: MediaQuery.of(context).size.width * 0.4,
+                            child: Text(
+                              product.title!,
+                              style: const TextStyle(
+                                fontSize: 18,
+                                color: Colors.black,
+                              ),
                               overflow: TextOverflow.ellipsis,
-                              fontSize: 18,
-                              color: Colors.black,
+                              maxLines: 2,
                             ),
                           ),
                           Container(
@@ -91,7 +96,7 @@ class ProductList extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            padding: const  EdgeInsets.only(top: 40.0),
+                            padding: const  EdgeInsets.only(top: 25.0),
                             child: Text(
                               "Stock: ${product.stock}", 
                               style: const TextStyle(

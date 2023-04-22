@@ -16,7 +16,7 @@ class ProductOverview extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           header(context),
-          bodyDetails()
+          bodyDetails(context)
         ],
       ),
     );
@@ -109,23 +109,26 @@ class ProductOverview extends StatelessWidget {
   }
 
 
-  Widget bodyDetails(){
+  Widget bodyDetails(BuildContext context){
     return Flexible(
       child: Column(
         children: [
           Row(
             children: <Widget>[   
               Expanded(
-                child: Padding(
+                child: Container(
+                  height: 73,
+                  width: MediaQuery.of(context).size.width * 0.7,
                   padding: const EdgeInsets.only(left: 25, top: 15),
                   child: Text(
                     product.title!,
                     style: const TextStyle(
                       overflow: TextOverflow.ellipsis,
                       fontWeight: FontWeight.bold,
-                      fontSize: 25,
+                      fontSize: 27,
                       color: Colors.white,
                     ),
+                    maxLines: 2,
                   ),
                 ),
               ),
@@ -173,7 +176,7 @@ class ProductOverview extends StatelessWidget {
             ),
           ),   
           Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.only(left: 25.0, top: 15, bottom: 15),
             child: Row(
               children: [
                 const Text("Category:  ", 
@@ -194,7 +197,7 @@ class ProductOverview extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 15, bottom: 15),
+            padding: const EdgeInsets.only(left: 25, bottom: 15),
             child: Row(
               children: [
                 const Text("Brand: ", 
@@ -213,7 +216,7 @@ class ProductOverview extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 15, bottom: 15),
+            padding: const EdgeInsets.only(left: 25, bottom: 15),
             child: Row(
               children: [
                 const Text("Stock: ", 
@@ -232,7 +235,7 @@ class ProductOverview extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 15, bottom: 15),
+            padding: const EdgeInsets.only(left: 25, bottom: 15),
             child: Row(
               children: [
                 const Icon(Icons.star, color: Colors.yellow, size: 25),
