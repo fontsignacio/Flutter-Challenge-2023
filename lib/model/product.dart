@@ -9,7 +9,7 @@ class Product {
   String? brand;
   String? category;
   String? thumbnail;
- // List<String>? images;
+  List<String>? images;
 
   Product(
       {this.id,
@@ -22,7 +22,7 @@ class Product {
       this.brand,
       this.category,
       this.thumbnail,
-      //this.images
+      this.images
   });
 
   Product.fromJson(Map<String, dynamic> json) {
@@ -32,13 +32,11 @@ class Product {
     price = int.parse(json['price'].toString());
     rating = double.parse(json['rating'].toString());
     stock = int.parse(json['stock'].toString());
-    // price = double.parse(json['price']);
-    // discountPercentage = double.parse(json['discountPercentage']);
-    // rating = double.parse(json['rating']);
+    discountPercentage = double.parse(json['discountPercentage'].toString());
     brand = json['brand'];
     category = json['category'];
     thumbnail = json['thumbnail'];
-    //images = json['images'];
+    images = List<String>.from(json["images"].map((x) => x));
   }
 
   Map<String, dynamic> toJson() {
@@ -53,7 +51,7 @@ class Product {
       'brand': brand,
       'category': category,
       'thumbnail': thumbnail,
-      //'images' : images
+      "images": images
     };
   }
 }
