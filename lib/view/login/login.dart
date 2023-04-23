@@ -61,7 +61,9 @@ class _LoginState extends State<Login> {
 
 
   Widget buildLogin(){
-    return Padding(
+    return Container(
+      alignment: Alignment.center,
+      margin: const EdgeInsets.symmetric(vertical: 40),
       padding: const EdgeInsets.all(10),
       child: Form(
         key: _formKey,

@@ -84,30 +84,34 @@ class _HomeState extends State<Home> {
             value:  MenuItem.item1,
             child: Stack(
               children: [
-                Container(
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.only(top: 10),                          
-                  child: CircleAvatar(  
-                  radius: 60,           
-                  backgroundColor: Colors.amber,     
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(100), 
-                    child: Image.network (
-                      widget.user.image!,
-                      fit: BoxFit.cover,
-                      height: 160,
-                      width: 160,
+                Positioned(
+                  child: Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.only(top: 10),                          
+                    child: CircleAvatar(  
+                    radius: 60,           
+                    backgroundColor: Colors.amber,     
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(100), 
+                      child: Image.network (
+                        widget.user.image!,
+                        fit: BoxFit.cover,
+                        height: 160,
+                        width: 160,
+                      ),
                     ),
                   ),
+                  ),
                 ),
-                ),
-                Container(
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.only(top: 140, bottom: 20),
-                  child: Text(widget.user.email!, 
-                    style: const TextStyle(
-                      color: Colors.white
-                    )
+                Positioned(
+                  child: Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.only(top: 140, bottom: 20),
+                    child: Text(widget.user.email!, 
+                      style: const TextStyle(
+                        color: Colors.white
+                      )
+                    ),
                   ),
                 ),
               ],

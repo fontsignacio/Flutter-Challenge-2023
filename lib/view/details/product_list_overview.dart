@@ -21,8 +21,7 @@ class ProductOverview extends StatelessWidget {
   }
 
   Widget header(BuildContext context){
-    return Expanded(
-      child: ClipRRect(
+    return  ClipRRect(
       borderRadius: BorderRadius.circular(15),
       child: Stack(
         children: <Widget>[
@@ -112,163 +111,161 @@ class ProductOverview extends StatelessWidget {
           ),    
           ]
         )     
-      ),
+      
     );
   }
 
 
   Widget bodyDetails(BuildContext context){
-    return Expanded(
-      child: Column(
-        children: [
-          Container(
-            height: 73,
-            width: MediaQuery.of(context).size.width,
-            padding: const EdgeInsets.only(left: 25, top: 15),
-            child: Text(
-              product.title!,
-              style: const TextStyle(
-                overflow: TextOverflow.ellipsis,
-                fontWeight: FontWeight.bold,
-                fontSize: 27,
-                color: Colors.white,
-              ),
-              maxLines: 2,
+    return Column(
+      children: [
+        Container(
+          height: 73,
+          width: MediaQuery.of(context).size.width,
+          padding: const EdgeInsets.only(left: 25, top: 15),
+          child: Text(
+            product.title!,
+            style: const TextStyle(
+              overflow: TextOverflow.ellipsis,
+              fontWeight: FontWeight.bold,
+              fontSize: 27,
+              color: Colors.white,
             ),
+            maxLines: 2,
           ),
-          Container(
-            padding: const EdgeInsets.only(left: 25, bottom: 10, top: 10),
-            child: Row(
-              children: [
-                Text("USD ${product.price?.toDouble().toStringAsFixed(2)}", 
+        ),
+        Container(
+          padding: const EdgeInsets.only(left: 25, bottom: 10, top: 10),
+          child: Row(
+            children: [
+              Text("USD ${product.price?.toDouble().toStringAsFixed(2)}", 
+                  style: const TextStyle(
+                    fontSize: 25,
+                    color: Colors.white,
+                    fontWeight: FontWeight.normal
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 5, top: 5),
+                child: Text("${product.discountPercentage}% OFF", 
                     style: const TextStyle(
-                      fontSize: 25,
-                      color: Colors.white,
-                      fontWeight: FontWeight.normal
+                      fontSize: 15,
+                      color: Color.fromARGB(255, 32, 173, 93),
+                      fontWeight: FontWeight.bold
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 5, top: 5),
-                  child: Text("${product.discountPercentage}% OFF", 
-                      style: const TextStyle(
-                        fontSize: 15,
-                        color: Color.fromARGB(255, 32, 173, 93),
-                        fontWeight: FontWeight.bold
-                      ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-          Container(
-            padding: const EdgeInsets.all(8.0),
-            child: Card(
-              color: const Color.fromARGB(255, 52, 51, 51),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 15, right: 15),
-                child: Text("\n${product.description}\n", 
+        ),
+        Container(
+          padding: const EdgeInsets.all(8.0),
+          child: Card(
+            color: const Color.fromARGB(255, 52, 51, 51),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 15, right: 15),
+              child: Text("\n${product.description}\n", 
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 17,
+                )
+              ) 
+            )
+          ),
+        ),   
+        Container(
+          padding: const EdgeInsets.only(left: 25.0, top: 15, bottom: 15),
+          child: Row(
+            children: [
+              const Flexible(
+                child: Text("Category:  ", 
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white60
+                  )
+                ),
+              ),
+              Flexible(
+                child: Text(product.category!, 
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.white
+                ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          padding: const EdgeInsets.only(left: 25, bottom: 15),
+          child: Row(
+            children: [
+              const Flexible(
+                child: Text("Brand: ", 
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white60
+                  )
+                ),
+              ),
+              Flexible(
+                child: Text(product.brand!, 
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.white
+                  )
+                ),
+              )
+            ],
+          ),
+        ),
+        Container(
+          padding: const EdgeInsets.only(left: 25, bottom: 15),
+          child: Row(
+            children: [
+              const Flexible(
+                child: Text("Stock: ", 
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white60
+                  )
+                ),
+              ),
+              Flexible(
+                child: Text("${product.stock}", 
                   style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 17,
+                    fontSize: 18
                   )
-                ) 
+                ),
               )
-            ),
-          ),   
-          Container(
-            padding: const EdgeInsets.only(left: 25.0, top: 15, bottom: 15),
-            child: Row(
-              children: [
-                const Flexible(
-                  child: Text("Category:  ", 
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white60
-                    )
-                  ),
-                ),
-                Flexible(
-                  child: Text(product.category!, 
-                    style: const TextStyle(
-                      fontSize: 18,
-                      color: Colors.white
-                  ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ],
-            ),
+            ],
           ),
-          Container(
-            padding: const EdgeInsets.only(left: 25, bottom: 15),
-            child: Row(
-              children: [
-                const Flexible(
-                  child: Text("Brand: ", 
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white60
-                    )
-                  ),
+        ),
+        Container(
+          padding: const EdgeInsets.only(left: 25, bottom: 15),
+          child: Row(
+            children: [
+              const Flexible(child: Icon(Icons.star, color: Colors.yellow, size: 25)),
+              Flexible(
+                child: Text(" ${product.rating}",  
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.white
+                  )
                 ),
-                Flexible(
-                  child: Text(product.brand!, 
-                    style: const TextStyle(
-                      fontSize: 18,
-                      color: Colors.white
-                    )
-                  ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
-          Container(
-            padding: const EdgeInsets.only(left: 25, bottom: 15),
-            child: Row(
-              children: [
-                const Flexible(
-                  child: Text("Stock: ", 
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white60
-                    )
-                  ),
-                ),
-                Flexible(
-                  child: Text("${product.stock}", 
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 18
-                    )
-                  ),
-                )
-              ],
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.only(left: 25, bottom: 15),
-            child: Row(
-              children: [
-                const Flexible(child: Icon(Icons.star, color: Colors.yellow, size: 25)),
-                Flexible(
-                  child: Text(" ${product.rating}",  
-                    style: const TextStyle(
-                      fontSize: 18,
-                      color: Colors.white
-                    )
-                  ),
-                )
-              ],
-            ),
-          ),
-          const SizedBox(height: 200,)
-        ],
-      ),
+        ),
+        const SizedBox(height: 200,)
+      ],
     );
   }
 
