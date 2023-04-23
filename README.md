@@ -30,7 +30,7 @@ El directorio lib contiene el código fuente de la aplicación. A continuación,
 
 - view: esta carpeta contiene las vistas de la aplicación y las rutas que las conectan entre sí. Cada vista es un widget que se encarga de representar una pantalla en la aplicación, como por ejemplo la vista de login, la lista de productos, el detalle de un producto y la lista de imágenes de un producto.
 
-- view_model: en esta carpeta se encuentra la lógica de negocios de la aplicación. Aquí se maneja la comunicación con la API, se procesan los datos recibidos y se realizan operaciones sobre ellos. El patrón de arquitectura utilizado en esta carpeta es el patrón MVVM.
+- view_model: en esta carpeta se encuentra la lógica de negocios de la aplicación. Aquí se maneja la comunicación con la API, se procesan los datos recibidos y se realizan operaciones sobre ellos.
 
 En general, la estructura del directorio lib sigue las convenciones de Flutter y está organizada de manera clara y coherente para facilitar la comprensión y el mantenimiento del código.
 
