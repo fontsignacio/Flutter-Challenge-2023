@@ -1,6 +1,22 @@
 # Flutter Challenge 2023
 
-El reto consistió en construir una aplicación móvil en Flutter y Dart, utilizando el consumo de una API. La aplicación cuenta con cuatro vistas: login, lista y detalle de producto, y una lista de imágenes de dicho producto. La arquitectura seleccionada para el proyecto fue MVVM. A continuación, se muestra el árbol de directorios de la carpeta lib:
+El reto consistió en construir una aplicación móvil en Flutter y Dart, utilizando el consumo de la API [Dummyjson](https://dummyjson.com/). Dicha aplicación cuenta con cuatro vistas: pantalla de ingreso, lista de producto, detalle de producto, y una lista de imágenes de dicho producto (agregada de manera adicional).
+
+## Gestión del trabajo
+
+Con fines de realizar una correcta gestión del trabajo, utilicé metodologías ágiles (Scrum) para desarrollar de manera ordenada cada etapa de la iteración del programa.
+
+![image](https://user-images.githubusercontent.com/93054257/233867849-101571d7-6a96-4223-b492-d77d2f91cc49.png)
+
+## Prototipos de Figma
+
+Para realizar una correcta visualización del objetivo, me apoyé en herramientas de prototipado tales como Figma, siendo este el primer paso para poder desarrollar un software de manera profesional.
+
+![image](https://user-images.githubusercontent.com/93054257/233867996-f3d58a1e-d4c0-4947-abd7-b4ce6f226e78.png)
+
+## Descripción de trabajo
+
+La arquitectura seleccionada para el proyecto fue MVVM. A continuación, se muestra el árbol de directorios de la carpeta lib:
 
 
 ![image](https://user-images.githubusercontent.com/93054257/233867517-72bc030f-5a79-4e11-be15-09eeb4065868.png)
@@ -17,18 +33,6 @@ El directorio lib contiene el código fuente de la aplicación. A continuación,
 - view_model: en esta carpeta se encuentra la lógica de negocios de la aplicación. Aquí se maneja la comunicación con la API, se procesan los datos recibidos y se realizan operaciones sobre ellos. El patrón de arquitectura utilizado en esta carpeta es el patrón MVVM.
 
 En general, la estructura del directorio lib sigue las convenciones de Flutter y está organizada de manera clara y coherente para facilitar la comprensión y el mantenimiento del código.
-
-## Gestión del trabajo
-
-Con fines de realizar una correcta gestión del trabajo, utilicé metodologías ágiles (Scrum) para desarrollar de manera ordenada cada etapa del desarrollo.
-
-![image](https://user-images.githubusercontent.com/93054257/233867849-101571d7-6a96-4223-b492-d77d2f91cc49.png)
-
-## Prototipos de Figma
-
-Para realizar una correcta visualización del objetivo, me apoyé en herramientas de prototipado tales como Figma, siendo este el primer paso para poder desarrollar un software de manera profesional.
-
-![image](https://user-images.githubusercontent.com/93054257/233867996-f3d58a1e-d4c0-4947-abd7-b4ce6f226e78.png)
 
 ## Capturas de pantalla
 
