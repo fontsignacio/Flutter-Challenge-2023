@@ -3,11 +3,10 @@ import 'dart:convert';
 import '../../model/product.dart';
 import '../../view_model/constants/constants.dart';
 
-
-class HttpHandler{
-  static Future<List<Product>> fetchProducts() async {
+class HttpSearch {
+  static Future<List<Product>> fetchSearch(String query) async {
     try {
-      final uri = Uri.https(baseUrl, "products");
+      final uri = Uri.https(baseUrl, "products/search", {'q': query});
 
       final response = await http.get(uri);
 
@@ -15,10 +14,10 @@ class HttpHandler{
         final data = jsonDecode(response.body)['products'];
         return List<Product>.from(data.map((e) => Product.fromJson(e)));
       } else {
-        throw Exception("Failed to fetch products, response status code: ${response.statusCode}");
+        throw Exception("Failed to fetch products");
       }
-    } catch (error) {
-      throw Exception("Failed to fetch products, error message: $error");
+    } catch (e) {
+      throw Exception("Error occurred while fetching products: $e");
     }
   }
 }

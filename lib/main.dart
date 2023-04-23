@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_challenge/view/routes/routes.dart';
-import 'package:flutter_challenge/view/home/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,13 +25,8 @@ class MyApp extends StatelessWidget {
           labelColor: Colors.white,
         )
       ),
-      initialRoute: '/home',
+      initialRoute: '/login',
       routes: routes,
-      onGenerateRoute: (settings) {
-        return MaterialPageRoute(
-          builder: (context) => const Home(),
-        );
-      },
     );
   }
 }
